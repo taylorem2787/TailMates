@@ -25,7 +25,7 @@ $( document ).ready(function() {
 
 
 
-  On click event to trigger default display
+  //On click event to trigger default display
    $(document).on('click', '.headerNFL', function () {
     $("#buttonHolder").show();
     $("#dynamicDisplay").hide();
