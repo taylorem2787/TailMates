@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<title>Yelp Test Api Html</title>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="jumbotron text-center">
+			<h1>Yelp Example</h1>
+			<hr>
+		</div>
+	</div>
+
+	
+	<div class="jumbotron text-center">
+		<h2>Search below for local restaurants</h2>
+		<hr>
+		<br>
+		<div class="col-sm-4"></div>
+			<div class="col-sm-3">
+				<input type="text" name="searchbar" id="input" class="form-control" value="" required="required" pattern="" title="" placeholder="Zipcode">
+			</div>
+			<div class="col-sm-1">
+				<button type="button" class="btn btn-success" id="submit">Search</button>
+			</div>
+		<div class="col-sm-4"></div>
+		
+<!-- Where we are going to get and display information -->
+		<div class="col-sm-12" id="display"></div>
+	</div>
+
+
+</div>
+
+
+<script type="text/javascript">
+	// This is a test to display information from the Yelp api
+	var URL = "https://api.seatgeek.com/2/events/"; // This is looking at the main URL for the seatgeek api
+	var eventId = "";  // I think that this is the event to be searched for
+	var myClientId = "?client_id=NTc2NDA5OHwxNDc0NDIwNTM3"; // This is the second to last of the url search elements
+	var myClientSecret = "&client_secret=LoY7xCdB4SiZiShM54SfT-RA042LbNKSZjdnBGUq"; // This is the last of the url search elements
+	var geoip = false; // This allows people to search within a radisu of their location if an event is taking place. It uses the person's ip address and postal code information.
+	var range = "range=" + 0 + "mi"; // This is used to defy how far a user is willing to travel for an event.
+	var sort = ""; // This is used to provide the basis for how you want your results
+
+	$("#submit").on("click", function() {
+		eventId = $("#input").val().trim();
+		console.log(eventId, "Line 53");
+
+		$.ajax({
+				url: URL,
+				type: 'GET',
+				data: 	{	eventId: eventId,
+							client_id: myClientId,
+							client_secret: myClientSecret,
+
+						},
+				success: function (data) {
+					console.log(data);
+				}
+			});
+	})
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<title>Firebase Chat Test Api Html</title>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="jumbotron text-center">
+			<h1>Firebase Chat Example</h1>
+			<hr>
+		</div>
+	</div>
+
+	
+	<div class="jumbotron text-center">
+		<div class="container-fluid">		
+			<h2>Chat now</h2>
+			<hr>
+	<!-- Where we are going to get and display information -->
+			<div class="col-sm-12" id="display">
+				<div class="well well-lg">
+					<div id="chat"></div>
+				</div>
+			</div>
+			<br>
+			<div class="col-sm-2"></div>
+				<div class="col-sm-5">
+					<input type="text" name="searchbar" id="input" class="form-control" value="" required="required" pattern="" title="" placeholder="Talk here!">
+				</div>
+				<div class="col-sm-1">
+					<button type="button" class="btn btn-success" id="submit">Send a Message!</button>
+				</div>
+			<div class="col-sm-4"></div>
+		</div>
+	</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+<script type="text/javascript">
+
+$("#input").on("click", function() {
+	var word = $("<p>")
+	word.attr("text", $("#input").val().trim());
+	$("#chat").prepend(word);
+	$("#input").empty();
+})
+
+// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyBnG4C4Lvlo3_Fe2vRGMva_zlN4GStd0sQ",
+		authDomain: "football-6b716.firebaseapp.com",
+		databaseURL: "https://football-6b716.firebaseio.com",
+		storageBucket: "football-6b716.appspot.com",
+		messagingSenderId: "438408899155"
+		};
+	firebase.initializeApp(config);
+
+
+
+</script>
+</body>
+</html>

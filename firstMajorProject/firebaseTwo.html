@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<title>Firebase Login Test Api Html</title>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">	
+		<div class="jumbotron text-center">
+			<h1>Firebase Login Example</h1>
+			<hr>
+		</div>
+	</div>
+	<div class="jumbotron text-center">
+		<div class="container-fluid">
+			<h2>Login now</h2>
+			<hr>
+	<!-- Where we are going to get and display information -->
+			<div class="col-sm-12" id="display">
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">Name</span>
+				  <input type="text" class="form-control" placeholder="Input1" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">Team</span>
+				  <input type="text" class="form-control" placeholder="Input2" aria-describedby="basic-addon1">
+				</div>
+				<br>
+				<button type="button" class="btn btn-primary pull-right">submit</button>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+<script type="text/javascript">
+
+
+
+// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyAddpeDyRmgcHM1KS0IcTcnSIXHHo23Hcc",
+		authDomain: "footballlogin-2e97b.firebaseapp.com",
+		databaseURL: "https://footballlogin-2e97b.firebaseio.com",
+		storageBucket: "footballlogin-2e97b.appspot.com",
+		messagingSenderId: "152203708017"
+		};
+	firebase.initializeApp(config);
+
+
+
+</script>
+</body>
+</html>

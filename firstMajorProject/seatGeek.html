@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<title>Seat Geek Test Api Html</title>
+</head>
+<body>
+<div class="container-fluid">
+
+
+	<div class="row">	
+		<div class="jumbotron text-center">
+			<h1>Seat Geek Example</h1>
+			<hr>
+		</div>
+	</div>
+
+	
+	<div class="jumbotron text-center">
+		<h2>Search below for NFL games</h2>
+		<hr>
+		<br>
+		<div class="col-sm-4"></div>
+			<div class="col-sm-3">
+				<input type="text" name="searchbar" id="input" class="form-control" value="" required="required" pattern="" title="" placeholder="Check out local events">
+			</div>
+			<div class="col-sm-1">
+				<button type="button" class="btn btn-success" id="submit">Search</button>
+			</div>
+		<div class="col-sm-4"></div>
+		
+<!-- Where we are going to get and display information -->
+		<div class="col-sm-12" id="display"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-2">
+			<div id="dateDisplayed"></div>
+		</div>
+		<div class="col-lg-10">
+			<div id="eventDisplayed"></div>
+		</div>
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+
+
+
+	// This is a test to display information from the seat geek api
+	var URL = "";
+	var baseURL = "https://api.seatgeek.com/2/events?performers.slug="; // This is looking at the main URL for the seatgeek api
+	var performer = "";  // I think that this is the event to be searched for
+
+
+	$("#submit").on("click", function() {
+		performer = $("#input").val().trim().split(' ').join('-').toString();
+
+
+		URL = baseURL + performer;
+		console.log(URL);
+
+		$.ajax({url: URL, method: 'GET'}).done(function(response) {
+			var results = response.events;
+			console.log(results);
+			for(var i = 0; i < results.length; i++) {
+				console.log(results[i].title);
+				console.log(results[i].datetime_local);
+				console.log(results[i].venue.city);
+				console.log(results[i].venue.name);
+				console.log(results[i].venue.postal_code);
+
+			}
+
+		});
+
+			});
+
+
+</script>
+</body>
+</html>
