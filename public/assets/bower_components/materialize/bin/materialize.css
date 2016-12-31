@@ -3403,11 +3403,11 @@ input[type=range] + .thumb {
           font-feature-settings: 'liga';
 }
 
-.container {
+/*.container {
   margin: 0 auto;
   max-width: 1280px;
   width: 90%;
-}
+}*/
 
 @media only screen and (min-width: 601px) {
   .container {
@@ -4951,7 +4951,10 @@ small {
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #26a69a;
+  /*background-color: #26a69a;*/    
+  background: rgb(105, 105, 105) !important;
+  background: rgba(105, 105, 105, .5) !important;   
+  border-color: .5 solid snow !important;
   text-align: center;
   letter-spacing: .5px;
   transition: .2s ease-out;
@@ -5280,10 +5283,16 @@ button.btn-floating {
   position: fixed;
   left: 0;
   right: 0;
-  background-color: #fafafa;
+  background-image: url(../../../images/tailmates-intro.jpg);
+  background-size: cover;
+  opacity: 1;
+/*  background: rgb(105, 105, 105);*/
+  background-color: rgba(105, 105, 105, 1);    
+  color: #fff;
+  /*background-color: #fafafa;*/
   padding: 0;
-  max-height: 70%;
-  width: 55%;
+  min-height: 70%;
+  width: 70%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
@@ -5375,10 +5384,13 @@ button.btn-floating {
   display: block;
   cursor: pointer;
   min-height: 3rem;
-  line-height: 3rem;
+  line-height: 2rem;
   padding: 0 1rem;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
+  /*background: rgb(105, 105, 105);*/
+  background-color: rgba(105, 105, 105, .5);
+ /* border-bottom: 1px solid #ddd;*/
+  background-color: transparent;
+
 }
 
 .collapsible-header i {
@@ -5395,6 +5407,7 @@ button.btn-floating {
   display: none;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
+  border-top: 1px solid #ddd;
 }
 
 .collapsible-body p {

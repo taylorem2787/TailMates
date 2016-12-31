@@ -1,0 +1,230 @@
+body {
+    background-color: black;
+    background-image: url(../images/finalBGgrad.png);
+    background-repeat: no-repeat;   
+    background-position: right 0px;
+}
+
+.container {
+    margin-left: -120px;
+    margin-top: 40px;
+    width: 100%
+}
+
+button {
+    background: none;
+    border: none;
+    color: none;
+}
+
+p {
+    padding: 10px !important;
+    display: block;
+}
+
+.headerNFL{
+    margin-left: 214px;
+}
+
+.imgPos{
+    float: left;
+    margin-top: -19px;
+    padding-left: 10px;
+    position: absolute;
+}
+
+.modal{
+    border-radius: 5px;
+    width: 710px;
+    height: 270px;
+}
+
+.modal-content {
+    margin-top: 45px;
+    margin-left: 60px;
+}
+.nfl{
+    width: 147px;
+    height: 150px;
+    margin-bottom: 1%;
+}
+
+h4{
+    font-family: 'Anton', sans-serif;
+    font-size: 50px;
+    text-align: center;
+    margin-left: -200px;
+}
+
+.agreeBTN{
+    margin-left: 450px;
+}
+
+.image-div{
+    display:none;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.marginCol{
+    margin-right: -5px;
+}
+
+#imgContainer{
+    margin-left: -5px;
+}
+
+.row .col.m1 {
+/*     width: 117px; */
+     margin-left: auto; 
+     left: auto; 
+     right: auto; 
+}
+
+#dynamicDisplay{
+    display: none;
+    text-align: center;
+    width: 45%;
+    color: white;
+    margin-left: 233px;
+    /*background-color: #000;*/ 
+    overflow-y: auto;
+}
+
+.collapsible-header{
+    /*background-color: white;*/
+    color: snow;
+}
+
+.collapsible{
+    border-radius: 7px;
+    border-color: black;
+}
+
+.eventHeaderDisplayed{
+    border-radius: 7px 7px 0px 0px;
+    color: white;
+    /*background-color: #3c3d3c;*/
+   /*background: rgb(200, 54, 54);*/ /* The Fallback */
+   background-color: rgba(0, 44, 192, 0.2); 
+    padding: 4px;
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1pt;
+}
+button {
+    font-family: 'Anton', sans-serif;
+    background-color: rgba(250, 250, 250, 10); 
+/*olor: rgba(250, 249, 247, 0.6);*/
+    color: black !important;
+    /*padding: 15px 35px 10px 35px;*/ 
+    margin-bottom: 10px;
+    width: 100px;
+    margin: 12px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+#box{
+    display: none;
+    position: fixed;
+    margin-top: 66px;
+    margin-left: 1000px;
+    width: 325px;
+}
+
+#firechat-wrapper {
+    height: 500px;
+    max-width: 325px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: rgb(105, 105, 105);
+    background: rgba(105, 105, 105, .5);   
+    margin: 50px auto;
+    text-align: center;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 5px 25px #666;
+    -moz-box-shadow: 0 5px 25px #666;
+    box-shadow: 0 5px 25px #666;
+}
+
+#firechat .btn {
+    font-size: 12px;
+}
+
+#firechat .firechat-dropdown-toggle.btn {
+    padding: 4px 0 0;
+    height: 41px;
+    /* margin-top: 2px; */
+}
+
+.input-field, .material-icons.right { 
+    height: 100%;
+    margin-left: 223px; 
+    padding: 0; 
+    width: 50%;
+}
+
+/*@import "compass/css3";
+
+body{
+  background:black;
+  font-family: 'Varela', sans-serif;
+}
+
+.glitch{
+  color:white;
+  font-size:100px;
+  position:relative;
+  width:400px;
+  margin:0 auto;
+}
+@keyframes noise-anim{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:after{
+  content:attr(data-text);
+  position:absolute;
+  left:2px;
+  text-shadow:-1px 0 red;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0); 
+  animation:noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:before{
+  content:attr(data-text);
+  position:absolute;
+  left:-2px;
+  text-shadow:1px 0 blue; 
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0); 
+  animation:noise-anim-2 3s infinite linear alternate-reverse;
+}*/
+
+/*#map-canvas {
+  height: 30em;
+  width: 30em;
+}
+*/
