@@ -2,28 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-  	<!-- JQuery -->
-<!--   	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
-        <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous"></script>
+	<title>Tailmates</title>
+	<!-- jquery -->
+	<script src="https://code.jquery.com/jquery.js"></script>
 	<!-- Firechat -->
     <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" />
     <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script>
-	<meta name="google-site-verification" content="lbmLrJAKqpRvtO1foPmjKvpQIvNPCz9kUq_zn9KQljE" />
 	<!-- Materialize CSS-->
 	<link rel="stylesheet" type="text/css" href="assets/bower_components/materialize/bin/materialize.css">
 	<!-- Materialize JS -->
 	<script type="text/javascript" src="assets/bower_components/materialize/bin/materialize.js"></script>
 	<!-- Style -->
 	<link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/googlemapstyle.css">
-    <link rel="stylesheet" href="assets/bower_components/materialize/bin/materialize.css">
-	<!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
-	<!-- Google maps api -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWJnUz-1fZ9d5kl1xnzkE-I1Ouy5PXvfM&libraries=places"
-    async defer></script> 
 	<!-- Firebase -->
 	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 	<!-- Oauth -->
@@ -32,248 +22,231 @@
 	<script type="text/javascript" src="assets/javascript/sha1.js"></script>
 	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css?family=Anton|Candal" rel="stylesheet">
-	<title>NFL Teams</title>
 </head>
 <body>
 <div class="container">
-<div class="row">
-    <div class="col s12 m12 l12">
-            <div id="modal1" class="modal">
-        <div class="modal-content">
-            <h4>WELCOME TO TAILMATES! <!-- <img src="assets/images/nflFootball.png" class="imgPos"> --></h4>
-            <h4 id="effect"  style="display:none;" align="center">READY</h4>
-            <h4 id="effect2" style="display:none;" align="center">SET</h4>
-            <p id="effect3" style="display:none;" align="center">HIKE!</p>
-            <a href="#!" class=" modal-action modal-close waves-effect waves-light btn hikeBTN" id="hike"  style="display:none;">Hike!</a>
-        </div>
-    </div>
-    </div>
-</div>
-
-    <div id="box">
-	   <div class="row">
-		    <div class="col s12 m12 l12">
-				<div id="firechat-wrapper">
-                    <div class="row">
-                        <div class="col s12 m12 l12">
-                            
-                        </div>
-                    </div>            
-                </div>
+		<div id="modal1" class="modal">
+			<div class="modal-content center-align">
+				<h4>TAILMATES</h4>
+				<p align="center">Are you ready to choose your team?</p>
+				<h4 id="effect"  style="display:none;" align="center">READY</h4>
+	            <h4 id="effect2" style="display:none;" align="center">SET</h4>
+				<a href="#!" class=" modal-action modal-close waves-effect waves-light btn-large agreeBTN" id="agree" style="display:none;">HIKE!</a>
 			</div>
 		</div>
-	</div>		
-	<div id="imgContainer">
+<!-- 			<div class="row">
+				<div class="col s12 m12 l12">
+					<div id="box">
+						<div id="firechat-wrapper"></div>
+					</div>
+				</div>
+			</div>	 -->	
+		<div id="imgContainer">
 		<div class="row">
-			<div class="col s12 m12 l12">
-				<div class="headerNFL">
-                    <img src="assets/images/header.png">
-                </div>
-            </div>
-	   </div>
-
-  	<div class="row" id="buttonHolder">
-		<div class="col s2 m2 l2"></div>
-		<div class="col s1 m1 l1 marginCol">
-	  		<div class="image-div">
-			    <img src="assets/images/ben3.png" class="teams" id="cincinnati-bengals">
+			<div class="col m12">
+					<div class="headerNFL"><img src="assets/images/header.png"></div>
 			</div>
- 			<div class="image-div">
-            	<img src="assets/images/brn3.png" class="teams" id="cleveland-browns">
-            </div>
-            <div class="image-div">
-            	<img src="assets/images/rav3.png" class="teams" id="baltimore-ravens">
-            </div>
-            <div class="image-div">
-            	<img src="assets/images/ste3.png" class="teams" id="pittsburgh-steeler">
-         	</div>
-	</div>
+		</div>
+  		<div class="row left-align" id="buttonHolder">
+  				<!-- <div class="col m2"></div> -->
+				<div class="col m1 marginCol">
 
-	<div class="col s1 m1 l1 marginCol">
-        <div class="image-div">
-        	<img src="assets/images/bea3.png" class="teams" id="chicago-bears">
-        </div>
-		
-		<div class="image-div">
-         	<img src="assets/images/jet3.png" class="teams" id="new-york-jets">
-         </div>
+	  					<div class="image-div">
+			            	<img src="assets/images/ben3.png" class="teams" id="cincinnati-bengals">
+			            </div>
 
-        <div class="image-div">
-      		<img src="assets/images/pac3.png" class="teams" id="green-bay-packers">
-      	</div>
+			 			<div class="image-div">
+			            	<img src="assets/images/brn3.png" class="teams" id="cleveland-browns">
+			            </div>
 
-        <div class="image-div">
-        	<img src="assets/images/vik3.png" class="teams" id="minnesota-vikings">
-        </div>
-	</div>
-	<div class="col s1 m1 l1 marginCol">
-	<!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-        <div class="image-div">
-         	<img src="assets/images/bil3.png" class="teams" id="buffalo-bills">
-         </div>
-        <!-- </button> -->
-        <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-        <div class="image-div">
-         	<img src="assets/images/dol3.png" class="teams" id="miami-dolphins">
-         </div>
-        <!-- </button> -->
-        <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-        <div class="image-div">
-         	<img src="assets/images/pat3.png" class="teams" id="new-england-patriots">
-         </div>
-        <!-- </button> -->
-        <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-        <div class="image-div">
-        	<img src="assets/images/lio3.png" class="teams" id="detroit-lions">
-        </div>
-	</div>
+			            <div class="image-div">
+			            	<img src="assets/images/rav3.png" class="teams" id="baltimore-ravens">
+			            </div>
 
-    <div class="col s1 m1 l1 marginCol">
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/cow3.png" class="teams" id="dallas-cowboys">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/gia3.png" class="teams" id="new-york-giants">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/eag3.png" class="teams" id="philadelphia-eagles">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/red3.png" class="teams" id="washington-redskins">
-         </div>
-		 <!-- </button> -->
-	</div>
+			            <div class="image-div">
+			            	<img src="assets/images/ste3.png" class="teams" id="pittsburgh-steeler">
+			            </div>
+			    </div>
+			    <div class="col m1 marginCol">
 
-	<div class="col s1 m1 l1 marginCol">
-		<!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/tex3.png" class="teams" id="houston-texans">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/col3.png" class="teams" id="indianapolis-colts">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/jag3.png" class="teams" id="jacksonville-jaguars">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/tit3.png" class="teams" id="tennessee-titans">
-         </div>
-         <!-- </button> -->
-	</div>
+			            <div class="image-div">
+			            	<img src="assets/images/bea3.png" class="teams" id="chicago-bears">
+			            </div>
 
-    <div class="col s1 m1 l1 marginCol">
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/fal3.png" class="teams" id="atlanta-falcons">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/pan3.png" class="teams" id="carolina-panthers">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/sai3.png" class="teams" id="new-orleans-saints">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/buc3.png" class="teams" id="tampa-bay-buccaneers">
-         </div>
-		 <!-- </button> -->
-	</div>
+			            <div class="image-div">
+			            	<img src="assets/images/lio3.png" class="teams" id="detroit-lions">
+			            </div>
 
-	<div class="col s1 m1 l1 marginCol">
-		<div class="image-div">
-     		<img src="assets/images/bro3.png" class="teams" id="denver-broncos">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/chi3.png" class="teams" id="kansas-city-chiefs">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/rai3.png" class="teams" id="oakland-raiders">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/cha3.png" class="teams" id="san-diego-chargers">
-         </div>
-		 <!-- </button> -->
-	</div>
-	<div class="col s1 m1 l1 marginCol">
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/car3.png" class="teams" id="arizona-cardinals">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/49s3.png" class="teams" id="san-francisco-49ers">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/sea3.png" class="teams" id="seattle-seahawks">
-         </div>
-         <!-- </button> -->
-         <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
-         <div class="image-div">
-         	<img src="assets/images/ram3.png" class="teams" id="los-angeles-rams">
-         </div>
-  	</div> <!-- end col m3 -->
-	  	
-	<div class="col m2"></div>
-	</div> <!-- end row -->
-	  		
-  	<div class="row">
-  		<div class="col s12 m12 l12">
-			<div id="dynamicDisplay">
-				<ul class="collapsible popout" data-collapsible="accordion"id="dynamicPanel">
-				    <li></li>	
-			  	</ul>
-                <div id="map"></div>
-			  		<ul class="collapsible popout" data-collapsible="accordion"id="dynamicPanel">	
-			  		</ul>
-				</div> <!-- end dynamicDisplay -->
-			</div>
-		</div> <!-- end dynamicDisplay row -->
-  	</div> <!-- end imgContainer -->
-</div> <!-- end container -->
+			            <div class="image-div">
+			          		<img src="assets/images/pac3.png" class="teams" id="green-bay-packers">
+			          	</div>
 
-  <!-- Google Maps -->
-<!--   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
-  <!-- Compiled and minified JavaScript -->
-<!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script> -->
-  <!-- Firebase -->
-<!--   <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script> -->
-  <!-- Google Maps -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNEH9ddgTnDDO-HPKQtW1INRnXiYkp5aA"></script>
-  <!-- JavaScript -->
-<!--   <script type="text/javascript" src="assets/javascript/oauth.js"></script>
-  <script type="text/javascript" src="assets/javascript/sha1.js"></script> -->
+			            <div class="image-div">
+			            	<img src="assets/images/vik3.png" class="teams" id="minnesota-vikings">
+			            </div>
+	  			</div>
+	  			<div class="col m1 marginCol">
+	  				 <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			            <div class="image-div">
+			             	<img src="assets/images/bil3.png" class="teams" id="buffalo-bills">
+			             </div>
+			            <!-- </button> -->
+			            <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			            <div class="image-div">
+			             	<img src="assets/images/dol3.png" class="teams" id="miami-dolphins">
+			             </div>
+			            <!-- </button> -->
+			            <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			            <div class="image-div">
+			             	<img src="assets/images/pat3.png" class="teams" id="new-england-patriots">
+			             </div>
+			            <!-- </button> -->
+			            <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			            <div class="image-div">
+			             	<img src="assets/images/jet3.png" class="teams" id="new-york-jets">
+			             </div>
+			    </div>
+			    <div class="col m1 marginCol">
+
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/cow3.png" class="teams" id="dallas-cowboys">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/gia3.png" class="teams" id="new-york-giants">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/eag3.png" class="teams" id="philadelphia-eagles">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/red3.png" class="teams" id="washington-redskins">
+			             </div>
+						 <!-- </button> -->
+
+	  			</div>
+	  			<div class="col m1 marginCol">
+	  				<!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/tex3.png" class="teams" id="houston-texans">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/col3.png" class="teams" id="indianapolis-colts">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/jag3.png" class="teams" id="jacksonville-jaguars">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/tit3.png" class="teams" id="tennessee-titans">
+			             </div>
+			             <!-- </button> -->
+			    </div>
+			    <div class="col m1 marginCol">
+
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/fal3.png" class="teams" id="atlanta-falcons">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/pan3.png" class="teams" id="carolina-panthers">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/sai3.png" class="teams" id="new-orleans-saints">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/buc3.png" class="teams" id="tampa-bay-buccaneers">
+			             </div>
+						 <!-- </button> -->
+	  			</div>
+	  			<div class="col m1 marginCol">
+	  					<div class="image-div">
+			             	<img src="assets/images/bro3.png" class="teams" id="denver-broncos">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/chi3.png" class="teams" id="kansas-city-chiefs">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/rai3.png" class="teams" id="oakland-raiders">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/cha3.png" class="teams" id="san-diego-chargers">
+			             </div>
+						 <!-- </button> -->
+				</div>
+				<div class="col m1 marginCol">
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/car3.png" class="teams" id="arizona-cardinals">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/49s3.png" class="teams" id="san-francisco-49ers">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/sea3.png" class="teams" id="seattle-seahawks">
+			             </div>
+			             <!-- </button> -->
+			             <!-- <button class="waves-effect waves-light btn modal-trigger"> -->
+			             <div class="image-div">
+			             	<img src="assets/images/ram3.png" class="teams" id="los-angeles-rams">
+			             </div>
+	  			</div> <!-- end col m3 -->
+	  			<div class="col m2"></div>
+	  		</div> <!-- end row -->
+
+
+	  		<div class="row">
+	  			<div class="col s12 m6 l16 left-align">
+					<div id="dynamicDisplay">
+						<ul class="collapsible" data-collapsible="accordion" id="dynamicPanel">
+				  		</ul>
+					</div> <!-- end dynamicDisplay -->
+				</div>
+			
+
+					
+				<div class="col s12 m6 l6">
+					<div id="box">
+					<div class="row">
+						<div class="col s12 m12 l12 right-align">
+						<div id="firechat-wrapper" class="right-align"></div>
+					</div>
+				</div>
+			</div>	
+			</div> <!-- end dynamicDisplay row -->
+	  		</div> <!-- end imgContainer -->
+
+  		</div> <!-- end container -->
+
 
 <!-- logic.js -->
-<script src="assets/javascript/logic.js"></script>
-<script src="assets/javascript/map.js"></script>
-<!-- <script type="text/javascript" src="assets/javascript/app.js"></script> -->
+<script type="text/javascript" src="assets/javascript/logic.js"></script>
 </body>
 
 </html>

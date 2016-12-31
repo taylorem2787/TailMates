@@ -5087,8 +5087,12 @@ button.btn-floating {
 }
 
 .btn-large {
-  height: 54px;
-  line-height: 54px;
+  height: 80px;
+  width: 200px;
+  line-height: 80px;
+  font-size: 50px;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 2px;
 }
 
 .btn-large i {

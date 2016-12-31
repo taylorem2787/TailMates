@@ -1,19 +1,27 @@
 {
-  "name": "tailmates",
+  "name": "tailmate",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "A website that allows users to coordinate tail gater parties before,  during, and after football games.",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/taylorem2787/TailMates.git"
+    "url": "git+https://github.com/castrocadriana/tailMate.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/taylorem2787/TailMates/issues"
+    "url": "https://github.com/castrocadriana/tailMate/issues"
   },
-  "homepage": "https://github.com/taylorem2787/TailMates#readme"
+  "homepage": "https://github.com/castrocadriana/tailMate#readme",
+  "devDependencies": {
+    "browserify": "^13.1.1",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0"
+  }
 }

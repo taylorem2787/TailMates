@@ -1,0 +1,22 @@
+{
+  "name": "tailmate",
+  "description": "A website that allows users to coordinate tail gater parties before,  during, and after football games.",
+  "main": "index.js",
+  "authors": [
+    "Your name <Melarajoaquin@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/castrocadriana/tailMate",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.97.8",
+    "font-awesome": "^4.7.0",
+    "firebaseui": "^1.0.0"
+  }
+}

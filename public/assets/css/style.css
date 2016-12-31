@@ -1,26 +1,18 @@
 body {
+
     background-color: black;
     background-image: url(../images/finalBGgrad.png);
     background-repeat: no-repeat;   
     background-position: right 0px;
+
 }
 
 .container {
-    margin-left: -120px;
+   margin: auto;
     margin-top: 40px;
     width: 100%
 }
 
-button {
-    background: none;
-    border: none;
-    color: none;
-}
-
-p {
-    padding: 10px !important;
-    display: block;
-}
 
 .headerNFL{
     margin-left: 214px;
@@ -29,20 +21,49 @@ p {
 .imgPos{
     float: left;
     margin-top: -19px;
-    padding-left: 10px;
+    padding-left: 15px;
     position: absolute;
+    height: 70px;
+    width: 100px;
 }
-
 .modal{
+    background-color:rgba(0, 0, 0, 0.3);
+    opacity: .4;
+    background-image: url(../images/modal.gif);
+    background-position: left;
+    opacity: 
+    background-size: 90%;
+    background-repeat: no-repeat;
     border-radius: 5px;
-    width: 710px;
-    height: 270px;
+    width: 99%;
+    margin: auto;
+    height: 85%;
+    margin-top: -3% !important;
 }
 
-.modal-content {
+.modal p, #agree {
+    font-size: 40px !important;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h4, .modal p, #agree{
+    text-shadow: 0px 3px 0px #b2a98f,
+             0px 14px 10px rgba(0,0,0,0.15),
+             0px 24px 2px rgba(0,0,0,0.1),
+             0px 34px 30px rgba(0,0,0,0.1);
+}
+
+.modal .btn{
+    text-align: center;
+}
+
+
+/*.modal-content {
     margin-top: 45px;
     margin-left: 60px;
-}
+}*/
 .nfl{
     width: 147px;
     height: 150px;
@@ -51,49 +72,59 @@ p {
 
 h4{
     font-family: 'Anton', sans-serif;
-    font-size: 50px;
+    font-size: 60px;
     text-align: center;
-    margin-left: -200px;
+    text-shadow: 4px black;
+    letter-spacing: 2px;
 }
-
-.agreeBTN{
+button {
+    background: none;
+    border: none;
+    color: none;
+}
+/*.agreeBTN{
     margin-left: 450px;
-}
+}*/
+
 
 .image-div{
     display:none;
     padding: 5px;
     margin-bottom: 10px;
-}
+   }
 
-.marginCol{
+
+/*.marginCol{
     margin-right: -5px;
-}
-
+}*/
 #imgContainer{
-    margin-left: -5px;
-}
+   margin:3%;
+   }
 
-.row .col.m1 {
-/*     width: 117px; */
+/*.row .col.m1 {
+     width: 117px; 
      margin-left: auto; 
      left: auto; 
      right: auto; 
-}
+}*/
+
 
 #dynamicDisplay{
     display: none;
     text-align: center;
-    width: 45%;
+    width: 80%;
     color: white;
-    margin-left: 233px;
-    /*background-color: #000;*/ 
-    overflow-y: auto;
+    margin:auto;
+   /* margin-left: 233px;*/
+
+    background-color: #000; 
+   /* overflow-y: auto;*/
 }
 
 .collapsible-header{
-    /*background-color: white;*/
-    color: snow;
+    background-color: white;
+    color: black;
+
 }
 
 .collapsible{
@@ -104,43 +135,29 @@ h4{
 .eventHeaderDisplayed{
     border-radius: 7px 7px 0px 0px;
     color: white;
-    /*background-color: #3c3d3c;*/
-   /*background: rgb(200, 54, 54);*/ /* The Fallback */
-   background-color: rgba(0, 44, 192, 0.2); 
-    padding: 4px;
+    background-color: #3c3d3c;
+    padding: 5px;
     font-family: 'Anton', sans-serif;
     font-size: 24px;
     letter-spacing: 1pt;
-}
-button {
-    font-family: 'Anton', sans-serif;
-    background-color: rgba(250, 250, 250, 10); 
-/*olor: rgba(250, 249, 247, 0.6);*/
-    color: black !important;
-    /*padding: 15px 35px 10px 35px;*/ 
-    margin-bottom: 10px;
-    width: 100px;
-    margin: 12px;
-    text-align: center;
-    border-radius: 4px;
 }
 
 #box{
     display: none;
     position: fixed;
     margin-top: 66px;
-    margin-left: 1000px;
-    width: 325px;
+  /*  margin-left: 1000px;*/
+   /* width: 325px;*/
 }
 
 #firechat-wrapper {
-    height: 500px;
-    max-width: 325px;
+    /*height: 500px;*/
+    width: 100%;
+    /*max-width: 325px;*/
     padding: 10px;
     border: 1px solid #ccc;
-    background: rgb(105, 105, 105);
-    background: rgba(105, 105, 105, .5);   
-    margin: 50px auto;
+    background-color: #fff;
+    /*margin: 50px auto;*/
     text-align: center;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -160,71 +177,6 @@ button {
     /* margin-top: 2px; */
 }
 
-.input-field, .material-icons.right { 
-    height: 100%;
-    margin-left: 223px; 
-    padding: 0; 
-    width: 50%;
+#buttonHolder{
+    margin-left: 5%;
 }
-
-/*@import "compass/css3";
-
-body{
-  background:black;
-  font-family: 'Varela', sans-serif;
-}
-
-.glitch{
-  color:white;
-  font-size:100px;
-  position:relative;
-  width:400px;
-  margin:0 auto;
-}
-@keyframes noise-anim{
-  $steps:20;
-  @for $i from 0 through $steps{
-    #{percentage($i*(1/$steps))}{
-      clip:rect(random(100)+px,9999px,random(100)+px,0);
-    }
-  }
-}
-.glitch:after{
-  content:attr(data-text);
-  position:absolute;
-  left:2px;
-  text-shadow:-1px 0 red;
-  top:0;
-  color:white;
-  background:black;
-  overflow:hidden;
-  clip:rect(0,900px,0,0); 
-  animation:noise-anim 2s infinite linear alternate-reverse;
-}
-
-@keyframes noise-anim-2{
-  $steps:20;
-  @for $i from 0 through $steps{
-    #{percentage($i*(1/$steps))}{
-      clip:rect(random(100)+px,9999px,random(100)+px,0);
-    }
-  }
-}
-.glitch:before{
-  content:attr(data-text);
-  position:absolute;
-  left:-2px;
-  text-shadow:1px 0 blue; 
-  top:0;
-  color:white;
-  background:black;
-  overflow:hidden;
-  clip:rect(0,900px,0,0); 
-  animation:noise-anim-2 3s infinite linear alternate-reverse;
-}*/
-
-/*#map-canvas {
-  height: 30em;
-  width: 30em;
-}
-*/

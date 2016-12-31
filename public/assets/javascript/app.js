@@ -1,10 +1,108 @@
 $(".teams").on("click", function () {
   console.log($(this).attr('id'));
 });
+
+// SeatGeek Api 
+// This is a test to display information from the seat geek api
+var display;
+$(".teams").on("click", function(this){
+	display = $()
+	console.log(display);
+});
+var URL = "";
+
+
+var baseURL = "https://api.seatgeek.com/2/events?performers.slug="; // This is looking at the main URL for the seatgeek api
+var performer = "";  // I think that this is the event to be searched for
+
+
+$("#submit").on("click", function() {
+	performer = $("#input").val().trim().split(' ').join('-').toString();
+
+
+	URL = baseURL + performer;
+	console.log(URL);
+
+	$.ajax({url: URL, method: 'GET'}).done(function(response) {
+		var results = response.events;
+		console.log(results);
+		for(var i = 0; i < results.length; i++) {
+			console.log(results[i].title);
+            console.log(results[i].datetime_local);
+            console.log(results[i].venue.city);
+            console.log(results[i].venue.name);
+            console.log(results[i].venue.postal_code);
+            console.log(results[i].venue.extended_address);
+            console.log(results[i].venue.display_location);
+            console.log(results[i].venue.slug);
+            console.log(results[i].venue.state);
+            console.log(results[i].venue.score);
+            console.log(results[i].venue.timezone);
+            console.log(results[i].short_title);
+            console.log(results[i].datetime_utc);
+            console.log(results[i].datetime_utc);
+            console.log(results[i].stats.average_price);
+            console.log(results[i].stats.lowest_price_good_deals);
+            console.log(results[i].stats.highest_price);
+            console.log(results[i].stats.lowest_price);
+            console.log(results[i].performers[1].image);
+            console.log(results[i].performers[1].divisions[0].display_name);
+            console.log(results[i].performers[1].divisions[0].division_level);
+            console.log(results[i].performers[1].divisions[1].display_name);
+            console.log(results[i].performers[1].divisions[1].division_level);
+
+		}
+
+	});
+
+});
+// End of Seat Api
+// ----------------------------------------------------------------------------------
+// Start of Open weather Api 
+
+var city = "";
+
+	$("#submit").on("click", function() {
+
+	city = $("#input").val().trim();
+
+
+    // This is our API Key
+    var APIKey = "08b0500863b3dfb3863a05215f613d59";
+
+    // Here we are building the URL we need to query the database
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+
+    // Here we run our AJAX call to the OpenWeatherMap API
+    $.ajax({url: queryURL, method: 'GET'})
+
+    // We store all of the retrieved data inside of an object called "response"
+    .done(function(response) {
+
+      // Log the queryURL
+      console.log(queryURL);
+
+      // Log the resulting object
+      console.log(response);
+
+      // Transfer content to HTML
+      $('.city').html("<h1>" + response.name + " Weather Details</h1>");
+      $(".wind").html("Wind Speed: " + response.wind.speed);
+      $(".humidity").html("Humidity: " + response.main.humidity);
+      $(".temp").html("Temperature (F) " + response.main.temp);
+
+      // Log the data in the console as well
+      console.log("Wind Speed: " + response.wind.speed);
+      console.log("Humidity: " + response.main.humidity);
+      console.log("Temperature (F): " + response.main.temp);
+    }); 
+});
+
+// End of Open Weather Api
 // ----------------------------------------------------------------------------------
 // Start of Yelp Api
 
-$("#submit").on("click", function() {
+	$("#submit").on("click", function() {
 var yelpTerms = $("#input1").val().trim();
 var yelpAddress = $("#input2").val().trim();
 var zipcode = ""; // This is going to be a variable coming from the Seat Geek Api
@@ -15,21 +113,21 @@ var auth = {
     accessTokenSecret: 'aoa5d5L1QxtgPfUqZfn7JZqvrI8',
     serviceProvider: {
     signatureMethod: "HMAC-SHA1"
-	}
-};
+		}
+	};
 
 	var terms = yelpTerms;
 	var near = yelpAddress;
 	var limit = 12;
-  var image_url = 'image_url';
-  var rating_img_url_large = 'rating_img_url_large';
-  var phone = 'phone';
-  var yelpUrl = 'url';
+    var image_url = 'image_url';
+    var rating_img_url_large = 'rating_img_url_large';
+    var phone = 'phone';
+    var yelpUrl = 'url';
 
-var accessor = {
-  consumerSecret: auth.consumerSecret,
-  tokenSecret: auth.accessTokenSecret
-};
+    var accessor = {
+      consumerSecret: auth.consumerSecret,
+      tokenSecret: auth.accessTokenSecret
+    };
 
     parameters = [];
     parameters.push(['url', yelpUrl]);
@@ -45,11 +143,11 @@ var accessor = {
     parameters.push(['oauth_token', auth.accessToken]);
     parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
 
-var message = {
-  'action': 'http://api.yelp.com/v2/search',
-  'method': 'GET',
-  'parameters': parameters
-};
+    var message = {
+      'action': 'http://api.yelp.com/v2/search',
+      'method': 'GET',
+      'parameters': parameters
+    };
 
     OAuth.setTimestampAndNonce(message);
     OAuth.SignatureMethod.sign(message, accessor);
@@ -58,20 +156,20 @@ var message = {
 
 
 
-$.ajax({'url': message.action,    
-  'method': 'GET',
-  'data': parameterMap,
-  'cache': true,
-  'dataType': 'jsonp',
-  'jsonpCallback': 'cb',}).done(function(response) {
+	$.ajax({'url': message.action,    
+		      'method': 'GET',
+		      'data': parameterMap,
+		      'cache': true,
+		      'dataType': 'jsonp',
+		      'jsonpCallback': 'cb',}).done(function(response) {
 		
 
 		console.log($.ajax({'url': message.action,    
-    'method': 'GET',
-    'data': parameterMap,
-    'cache': true,
-    'dataType': 'jsonp',
-    'jsonpCallback': 'cb',}));
+		      'method': 'GET',
+		      'data': parameterMap,
+		      'cache': true,
+		      'dataType': 'jsonp',
+		      'jsonpCallback': 'cb',}));
 		console.log(response);
 	});
 });
@@ -89,7 +187,7 @@ $.ajax({'url': message.action,
       var service;
 
       function initMap() {
-        map = new google.maps.Map(document.getElementById('#map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 38.982409, lng: -76.957849},
           zoom: 15,
           styles: [{

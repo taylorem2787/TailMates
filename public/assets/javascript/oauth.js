@@ -370,19 +370,19 @@ OAuth.setProperties(OAuth.SignatureMethod.prototype, // instance members
         return signature; // just in case someone's interested
     }
 ,
-/** Set the key string for signing. */
-initialize: function initialize(name, accessor) {
-    var consumerSecret;
-    if (accessor.accessorSecret != null
-        && name.length > 9
-        && name.substring(name.length-9) == "-Accessor")
-    {
-        consumerSecret = accessor.accessorSecret;
-    } else {
-        consumerSecret = accessor.consumerSecret;
-    }
-    this.key = OAuth.percentEncode(consumerSecret)
-         +"&"+ OAuth.percentEncode(accessor.tokenSecret);
+    /** Set the key string for signing. */
+    initialize: function initialize(name, accessor) {
+        var consumerSecret;
+        if (accessor.accessorSecret != null
+            && name.length > 9
+            && name.substring(name.length-9) == "-Accessor")
+        {
+            consumerSecret = accessor.accessorSecret;
+        } else {
+            consumerSecret = accessor.consumerSecret;
+        }
+        this.key = OAuth.percentEncode(consumerSecret)
+             +"&"+ OAuth.percentEncode(accessor.tokenSecret);
     }
 });
 
@@ -393,157 +393,157 @@ initialize: function initialize(name, accessor) {
 // Class members:
 OAuth.setProperties(OAuth.SignatureMethod, // class members
 {
-sign: function sign(message, accessor) {
-    var name = OAuth.getParameterMap(message.parameters).oauth_signature_method;
-    if (name == null || name == "") {
-        name = "HMAC-SHA1";
-        OAuth.setParameter(message, "oauth_signature_method", name);
-    }
-    OAuth.SignatureMethod.newMethod(name, accessor).sign(message);
-}
-,
-/** Instantiate a SignatureMethod for the given method name. */
-newMethod: function newMethod(name, accessor) {
-    var impl = OAuth.SignatureMethod.REGISTERED[name];
-    if (impl != null) {
-        var method = new impl();
-        method.initialize(name, accessor);
-        return method;
-    }
-    var err = new Error("signature_method_rejected");
-    var acceptable = "";
-    for (var r in OAuth.SignatureMethod.REGISTERED) {
-        if (acceptable != "") acceptable += '&';
-        acceptable += OAuth.percentEncode(r);
-    }
-    err.oauth_acceptable_signature_methods = acceptable;
-    throw err;
-}
-,
-/** A map from signature method name to constructor. */
-REGISTERED : {}
-,
-/** Subsequently, the given constructor will be used for the named methods.
-    The constructor will be called with no parameters.
-    The resulting object should usually implement getSignature(baseString).
-    You can easily define such a constructor by calling makeSubclass, below.
- */
-registerMethodClass: function registerMethodClass(names, classConstructor) {
-    for (var n = 0; n < names.length; ++n) {
-        OAuth.SignatureMethod.REGISTERED[names[n]] = classConstructor;
-    }
-}
-,
-/** Create a subclass of OAuth.SignatureMethod, with the given getSignature function. */
-makeSubclass: function makeSubclass(getSignatureFunction) {
-    var superClass = OAuth.SignatureMethod;
-    var subClass = function() {
-        superClass.call(this);
-    };
-    subClass.prototype = new superClass();
-    // Delete instance variables from prototype:
-    // delete subclass.prototype... There aren't any.
-    subClass.prototype.getSignature = getSignatureFunction;
-    subClass.prototype.constructor = subClass;
-    return subClass;
-}
-,
-getBaseString: function getBaseString(message) {
-    var URL = message.action;
-    var q = URL.indexOf('?');
-    var parameters;
-    if (q < 0) {
-        parameters = message.parameters;
-    } else {
-        // Combine the URL query string with the other parameters:
-        parameters = OAuth.decodeForm(URL.substring(q + 1));
-        var toAdd = OAuth.getParameterList(message.parameters);
-        for (var a = 0; a < toAdd.length; ++a) {
-            parameters.push(toAdd[a]);
+    sign: function sign(message, accessor) {
+        var name = OAuth.getParameterMap(message.parameters).oauth_signature_method;
+        if (name == null || name == "") {
+            name = "HMAC-SHA1";
+            OAuth.setParameter(message, "oauth_signature_method", name);
         }
+        OAuth.SignatureMethod.newMethod(name, accessor).sign(message);
     }
-    return OAuth.percentEncode(message.method.toUpperCase())
-     +'&'+ OAuth.percentEncode(OAuth.SignatureMethod.normalizeUrl(URL))
-     +'&'+ OAuth.percentEncode(OAuth.SignatureMethod.normalizeParameters(parameters));
-}
 ,
-normalizeUrl: function normalizeUrl(url) {
-    var uri = OAuth.SignatureMethod.parseUri(url);
-    var scheme = uri.protocol.toLowerCase();
-    var authority = uri.authority.toLowerCase();
-    var dropPort = (scheme == "http" && uri.port == 80)
-                || (scheme == "https" && uri.port == 443);
-    if (dropPort) {
-        // find the last : in the authority
-        var index = authority.lastIndexOf(":");
-        if (index >= 0) {
-            authority = authority.substring(0, index);
+    /** Instantiate a SignatureMethod for the given method name. */
+    newMethod: function newMethod(name, accessor) {
+        var impl = OAuth.SignatureMethod.REGISTERED[name];
+        if (impl != null) {
+            var method = new impl();
+            method.initialize(name, accessor);
+            return method;
         }
+        var err = new Error("signature_method_rejected");
+        var acceptable = "";
+        for (var r in OAuth.SignatureMethod.REGISTERED) {
+            if (acceptable != "") acceptable += '&';
+            acceptable += OAuth.percentEncode(r);
+        }
+        err.oauth_acceptable_signature_methods = acceptable;
+        throw err;
     }
-    var path = uri.path;
-    if (!path) {
-        path = "/"; // conforms to RFC 2616 section 3.2.2
-    }
-    // we know that there is no query and no fragment here.
-    return scheme + "://" + authority + path;
-}
 ,
-parseUri: function parseUri (str) {
-    /* This function was adapted from parseUri 1.2.1
-       http://stevenlevithan.com/demo/parseuri/js/assets/parseuri.js
+    /** A map from signature method name to constructor. */
+    REGISTERED : {}
+,
+    /** Subsequently, the given constructor will be used for the named methods.
+        The constructor will be called with no parameters.
+        The resulting object should usually implement getSignature(baseString).
+        You can easily define such a constructor by calling makeSubclass, below.
      */
-    var o = {key: ["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],
-             parser: {strict: /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@\/]*):?([^:@\/]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/ }};
-    var m = o.parser.strict.exec(str);
-    var uri = {};
-    var i = 14;
-    while (i--) uri[o.key[i]] = m[i] || "";
-    return uri;
-}
+    registerMethodClass: function registerMethodClass(names, classConstructor) {
+        for (var n = 0; n < names.length; ++n) {
+            OAuth.SignatureMethod.REGISTERED[names[n]] = classConstructor;
+        }
+    }
 ,
-normalizeParameters: function normalizeParameters(parameters) {
-    if (parameters == null) {
-        return "";
+    /** Create a subclass of OAuth.SignatureMethod, with the given getSignature function. */
+    makeSubclass: function makeSubclass(getSignatureFunction) {
+        var superClass = OAuth.SignatureMethod;
+        var subClass = function() {
+            superClass.call(this);
+        };
+        subClass.prototype = new superClass();
+        // Delete instance variables from prototype:
+        // delete subclass.prototype... There aren't any.
+        subClass.prototype.getSignature = getSignatureFunction;
+        subClass.prototype.constructor = subClass;
+        return subClass;
     }
-    var list = OAuth.getParameterList(parameters);
-    var sortable = [];
-    for (var p = 0; p < list.length; ++p) {
-        var nvp = list[p];
-        if (nvp[0] != "oauth_signature") {
-            sortable.push([ OAuth.percentEncode(nvp[0])
-                          + " " // because it comes before any character that can appear in a percentEncoded string.
-                          + OAuth.percentEncode(nvp[1])
-                          , nvp]);
+,
+    getBaseString: function getBaseString(message) {
+        var URL = message.action;
+        var q = URL.indexOf('?');
+        var parameters;
+        if (q < 0) {
+            parameters = message.parameters;
+        } else {
+            // Combine the URL query string with the other parameters:
+            parameters = OAuth.decodeForm(URL.substring(q + 1));
+            var toAdd = OAuth.getParameterList(message.parameters);
+            for (var a = 0; a < toAdd.length; ++a) {
+                parameters.push(toAdd[a]);
+            }
+        }
+        return OAuth.percentEncode(message.method.toUpperCase())
+         +'&'+ OAuth.percentEncode(OAuth.SignatureMethod.normalizeUrl(URL))
+         +'&'+ OAuth.percentEncode(OAuth.SignatureMethod.normalizeParameters(parameters));
     }
-}
-sortable.sort(function(a,b) {
-                  if (a[0] < b[0]) return  -1;
-                  if (a[0] > b[0]) return 1;
-                  return 0;
-                  });
-    var sorted = [];
+,
+    normalizeUrl: function normalizeUrl(url) {
+        var uri = OAuth.SignatureMethod.parseUri(url);
+        var scheme = uri.protocol.toLowerCase();
+        var authority = uri.authority.toLowerCase();
+        var dropPort = (scheme == "http" && uri.port == 80)
+                    || (scheme == "https" && uri.port == 443);
+        if (dropPort) {
+            // find the last : in the authority
+            var index = authority.lastIndexOf(":");
+            if (index >= 0) {
+                authority = authority.substring(0, index);
+            }
+        }
+        var path = uri.path;
+        if (!path) {
+            path = "/"; // conforms to RFC 2616 section 3.2.2
+        }
+        // we know that there is no query and no fragment here.
+        return scheme + "://" + authority + path;
+    }
+,
+    parseUri: function parseUri (str) {
+        /* This function was adapted from parseUri 1.2.1
+           http://stevenlevithan.com/demo/parseuri/js/assets/parseuri.js
+         */
+        var o = {key: ["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],
+                 parser: {strict: /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@\/]*):?([^:@\/]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/ }};
+        var m = o.parser.strict.exec(str);
+        var uri = {};
+        var i = 14;
+        while (i--) uri[o.key[i]] = m[i] || "";
+        return uri;
+    }
+,
+    normalizeParameters: function normalizeParameters(parameters) {
+        if (parameters == null) {
+            return "";
+        }
+        var list = OAuth.getParameterList(parameters);
+        var sortable = [];
+        for (var p = 0; p < list.length; ++p) {
+            var nvp = list[p];
+            if (nvp[0] != "oauth_signature") {
+                sortable.push([ OAuth.percentEncode(nvp[0])
+                              + " " // because it comes before any character that can appear in a percentEncoded string.
+                              + OAuth.percentEncode(nvp[1])
+                              , nvp]);
+            }
+        }
+        sortable.sort(function(a,b) {
+                          if (a[0] < b[0]) return  -1;
+                          if (a[0] > b[0]) return 1;
+                          return 0;
+                      });
+        var sorted = [];
         for (var s = 0; s < sortable.length; ++s) {
             sorted.push(sortable[s][1]);
         }
-    return OAuth.formEncode(sorted);
-}
+        return OAuth.formEncode(sorted);
+    }
 });
 
-    OAuth.SignatureMethod.registerMethodClass(["PLAINTEXT", "PLAINTEXT-Accessor"],
+OAuth.SignatureMethod.registerMethodClass(["PLAINTEXT", "PLAINTEXT-Accessor"],
     OAuth.SignatureMethod.makeSubclass(
         function getSignature(baseString) {
             return this.key;
-    }
-));
+        }
+    ));
 
-    OAuth.SignatureMethod.registerMethodClass(["HMAC-SHA1", "HMAC-SHA1-Accessor"],
+OAuth.SignatureMethod.registerMethodClass(["HMAC-SHA1", "HMAC-SHA1-Accessor"],
     OAuth.SignatureMethod.makeSubclass(
         function getSignature(baseString) {
             b64pad = '=';
             var signature = b64_hmac_sha1(this.key, baseString);
             return signature;
-    }
-));
+        }
+    ));
 
 try {
     OAuth.correctTimestampFromSrc();
